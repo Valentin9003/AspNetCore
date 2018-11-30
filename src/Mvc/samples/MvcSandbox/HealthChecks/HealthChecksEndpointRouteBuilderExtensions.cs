@@ -15,7 +15,7 @@ namespace Microsoft.AspNetCore.Builder
     {
         private static readonly Random _random = new Random();
 
-        public static IEndpointConventionBuilder MapHealthChecks(this IEndpointRouteBuilder builder, string pattern)
+        public static IEndpointConventions MapHealthChecks(this IEndpointRouteBuilder builder, string pattern)
         {
             return builder.MapGet(
                 pattern,

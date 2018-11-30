@@ -120,10 +120,10 @@ namespace Microsoft.AspNetCore.Builder
                 }
 
                 // Include all controllers with attribute routing and Razor pages
-                var defaultEndpointConventionBuilder = new DefaultEndpointConventionBuilder();
+                var defaultEndpointConventions = new DefaultEndpointConventions();
                 mvcEndpointDataSource.AttributeRoutingConventionResolvers.Add((actionDescriptor) =>
                 {
-                    return defaultEndpointConventionBuilder;
+                    return defaultEndpointConventions;
                 });
 
                 if (!app.Properties.TryGetValue(EndpointRoutingRegisteredKey, out _))

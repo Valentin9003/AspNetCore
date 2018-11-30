@@ -7,13 +7,13 @@ using Microsoft.AspNetCore.Routing.Patterns;
 
 namespace Microsoft.AspNetCore.Routing
 {
-    public sealed class RouteEndpointModel : EndpointModel
+    public sealed class RouteEndpointBuilder : EndpointBuilder
     {
         public RoutePattern RoutePattern { get; set; }
 
         public int Order { get; set; }
 
-        public RouteEndpointModel(
+        public RouteEndpointBuilder(
            RequestDelegate requestDelegate,
            RoutePattern routePattern,
            int order)

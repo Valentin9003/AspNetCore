@@ -19,7 +19,7 @@ namespace Microsoft.AspNetCore.Builder
         private static readonly string[] DeleteVerb = new[] { "DELETE" };
 
         #region MapVerbs
-        public static IEndpointConventionBuilder MapGet(
+        public static IEndpointConventions MapGet(
             this IEndpointRouteBuilder builder,
             string pattern,
             RequestDelegate requestDelegate,
@@ -28,7 +28,7 @@ namespace Microsoft.AspNetCore.Builder
             return MapVerbs(builder, pattern, displayName: null, requestDelegate, GetVerb, metadata);
         }
 
-        public static IEndpointConventionBuilder MapGet(
+        public static IEndpointConventions MapGet(
             this IEndpointRouteBuilder builder,
             string pattern,
             string displayName,
@@ -38,7 +38,7 @@ namespace Microsoft.AspNetCore.Builder
             return MapVerbs(builder, pattern, displayName, requestDelegate, GetVerb, metadata);
         }
 
-        public static IEndpointConventionBuilder MapPost(
+        public static IEndpointConventions MapPost(
             this IEndpointRouteBuilder builder,
             string pattern,
             RequestDelegate requestDelegate,
@@ -47,7 +47,7 @@ namespace Microsoft.AspNetCore.Builder
             return MapVerbs(builder, pattern, displayName: null, requestDelegate, PostVerb, metadata);
         }
 
-        public static IEndpointConventionBuilder MapPost(
+        public static IEndpointConventions MapPost(
             this IEndpointRouteBuilder builder,
             string pattern,
             string displayName,
@@ -57,7 +57,7 @@ namespace Microsoft.AspNetCore.Builder
             return MapVerbs(builder, pattern, displayName, requestDelegate, PostVerb, metadata);
         }
 
-        public static IEndpointConventionBuilder MapPut(
+        public static IEndpointConventions MapPut(
             this IEndpointRouteBuilder builder,
             string pattern,
             RequestDelegate requestDelegate,
@@ -66,7 +66,7 @@ namespace Microsoft.AspNetCore.Builder
             return MapVerbs(builder, pattern, displayName: null, requestDelegate, PutVerb, metadata);
         }
 
-        public static IEndpointConventionBuilder MapPut(
+        public static IEndpointConventions MapPut(
             this IEndpointRouteBuilder builder,
             string pattern,
             string displayName,
@@ -76,7 +76,7 @@ namespace Microsoft.AspNetCore.Builder
             return MapVerbs(builder, pattern, displayName, requestDelegate, PutVerb, metadata);
         }
 
-        public static IEndpointConventionBuilder MapDelete(
+        public static IEndpointConventions MapDelete(
             this IEndpointRouteBuilder builder,
             string pattern,
             RequestDelegate requestDelegate,
@@ -85,7 +85,7 @@ namespace Microsoft.AspNetCore.Builder
             return MapVerbs(builder, pattern, displayName: null, requestDelegate, DeleteVerb, metadata);
         }
 
-        public static IEndpointConventionBuilder MapDelete(
+        public static IEndpointConventions MapDelete(
             this IEndpointRouteBuilder builder,
             string pattern,
             string displayName,
@@ -95,7 +95,7 @@ namespace Microsoft.AspNetCore.Builder
             return MapVerbs(builder, pattern, displayName, requestDelegate, DeleteVerb, metadata);
         }
 
-        public static IEndpointConventionBuilder MapVerbs(
+        public static IEndpointConventions MapVerbs(
            this IEndpointRouteBuilder builder,
            string pattern,
            RequestDelegate requestDelegate,
@@ -105,7 +105,7 @@ namespace Microsoft.AspNetCore.Builder
             return MapVerbs(builder, pattern, displayName: null, requestDelegate, httpMethods, metadata);
         }
 
-        public static IEndpointConventionBuilder MapVerbs(
+        public static IEndpointConventions MapVerbs(
            this IEndpointRouteBuilder builder,
            string pattern,
            string displayName,
@@ -130,7 +130,7 @@ namespace Microsoft.AspNetCore.Builder
         #endregion
 
         #region Map
-        public static IEndpointConventionBuilder Map(
+        public static IEndpointConventions Map(
             this IEndpointRouteBuilder builder,
             string pattern,
             RequestDelegate requestDelegate,
@@ -139,7 +139,7 @@ namespace Microsoft.AspNetCore.Builder
             return Map(builder, RoutePatternFactory.Parse(pattern), pattern, requestDelegate, metadata);
         }
 
-        public static IEndpointConventionBuilder Map(
+        public static IEndpointConventions Map(
             this IEndpointRouteBuilder builder,
             string pattern,
             string displayName,
@@ -149,7 +149,7 @@ namespace Microsoft.AspNetCore.Builder
             return Map(builder, RoutePatternFactory.Parse(pattern), displayName, requestDelegate, metadata);
         }
 
-        public static IEndpointConventionBuilder Map(
+        public static IEndpointConventions Map(
             this IEndpointRouteBuilder builder,
             RoutePattern pattern,
             RequestDelegate requestDelegate,
@@ -158,7 +158,7 @@ namespace Microsoft.AspNetCore.Builder
             return Map(builder, pattern, pattern.RawText ?? pattern.DebuggerToString(), requestDelegate, metadata);
         }
 
-        public static IEndpointConventionBuilder Map(
+        public static IEndpointConventions Map(
             this IEndpointRouteBuilder builder,
             RoutePattern pattern,
             string displayName,
@@ -182,16 +182,16 @@ namespace Microsoft.AspNetCore.Builder
 
             const int defaultOrder = 0;
 
-            var routeEndpointModel = new RouteEndpointModel(
+            var routeEndpointBuilder = new RouteEndpointBuilder(
                 requestDelegate,
                 pattern,
                 defaultOrder);
-            routeEndpointModel.DisplayName = displayName;
+            routeEndpointBuilder.DisplayName = displayName;
             if (metadata != null)
             {
                 foreach (var item in metadata)
                 {
-                    routeEndpointModel.Metadata.Add(item);
+                    routeEndpointBuilder.Metadata.Add(item);
                 }
             }
 
@@ -203,7 +203,7 @@ namespace Microsoft.AspNetCore.Builder
                 builder.DataSources.Add(modelEndpointDataSource);
             }
 
-            return modelEndpointDataSource.AddEndpointModel(routeEndpointModel);
+            return modelEndpointDataSource.AddEndpointBuilder(routeEndpointBuilder);
         }
         #endregion
     }

@@ -59,7 +59,7 @@ namespace Microsoft.AspNetCore.Mvc.Routing
             _parameterPolicyFactory = parameterPolicyFactory;
 
             ConventionalEndpointInfos = new List<MvcEndpointInfo>();
-            AttributeRoutingConventionResolvers = new List<Func<ActionDescriptor, DefaultEndpointConventionBuilder>>();
+            AttributeRoutingConventionResolvers = new List<Func<ActionDescriptor, DefaultEndpointConventions>>();
 
             // IMPORTANT: this needs to be the last thing we do in the constructor. Change notifications can happen immediately!
             //
@@ -75,7 +75,7 @@ namespace Microsoft.AspNetCore.Mvc.Routing
 
         public List<MvcEndpointInfo> ConventionalEndpointInfos { get; }
 
-        public List<Func<ActionDescriptor, DefaultEndpointConventionBuilder>> AttributeRoutingConventionResolvers { get; }
+        public List<Func<ActionDescriptor, DefaultEndpointConventions>> AttributeRoutingConventionResolvers { get; }
 
         public override IReadOnlyList<Endpoint> Endpoints
         {
@@ -220,7 +220,7 @@ namespace Microsoft.AspNetCore.Mvc.Routing
             }
         }
 
-        private DefaultEndpointConventionBuilder ResolveActionConventionBuilder(ActionDescriptor action)
+        private DefaultEndpointConventions ResolveActionConventionBuilder(ActionDescriptor action)
         {
             foreach (var filter in AttributeRoutingConventionResolvers)
             {
@@ -249,7 +249,7 @@ namespace Microsoft.AspNetCore.Mvc.Routing
             IDictionary<string, IList<IParameterPolicy>> allParameterPolicies,
             bool suppressLinkGeneration,
             bool suppressPathMatching,
-            List<Action<EndpointModel>> conventions)
+            List<Action<EndpointBuilder>> conventions)
         {
             var newPathSegments = routePattern.PathSegments.ToList();
             var hasLinkGenerationEndpoint = false;
@@ -571,7 +571,7 @@ namespace Microsoft.AspNetCore.Mvc.Routing
             RouteValueDictionary dataTokens,
             bool suppressLinkGeneration,
             bool suppressPathMatching,
-            List<Action<EndpointModel>> conventions)
+            List<Action<EndpointBuilder>> conventions)
         {
             RequestDelegate requestDelegate = (context) =>
             {
@@ -586,7 +586,7 @@ namespace Microsoft.AspNetCore.Mvc.Routing
             var defaults = new RouteValueDictionary(nonInlineDefaults);
             EnsureRequiredValuesInDefaults(actionRouteValues, defaults, segments);
 
-            var model = new RouteEndpointModel(requestDelegate, RoutePatternFactory.Pattern(patternRawText, defaults, parameterPolicies: null, segments), order);
+            var model = new RouteEndpointBuilder(requestDelegate, RoutePatternFactory.Pattern(patternRawText, defaults, parameterPolicies: null, segments), order);
 
             AddEndpointMetadata(
                 model.Metadata,

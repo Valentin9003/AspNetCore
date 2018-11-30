@@ -11,7 +11,7 @@ namespace Microsoft.AspNetCore.Builder
 {
     public static class RazorPagesEndpointRouteBuilderExtensions
     {
-        public static IEndpointConventionBuilder MapRazorPages(
+        public static IEndpointConventions MapRazorPages(
             this IEndpointRouteBuilder routeBuilder,
             string basePath = null)
         {
@@ -23,7 +23,7 @@ namespace Microsoft.AspNetCore.Builder
                 routeBuilder.DataSources.Add(mvcEndpointDataSource);
             }
 
-            var conventionBuilder = new DefaultEndpointConventionBuilder();
+            var conventionBuilder = new DefaultEndpointConventionss();
 
             mvcEndpointDataSource.AttributeRoutingConventionResolvers.Add(actionDescriptor =>
             {
