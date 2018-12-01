@@ -27,6 +27,10 @@
     <ProjectReferenceProvider Include="Microsoft.AspNetCore.Owin" ProjectPath="$(RepositoryRoot)src\Http\Owin\src\Microsoft.AspNetCore.Owin.csproj" />
     <ProjectReferenceProvider Include="Microsoft.AspNetCore.WebUtilities" ProjectPath="$(RepositoryRoot)src\Http\WebUtilities\src\Microsoft.AspNetCore.WebUtilities.csproj" />
     <ProjectReferenceProvider Include="Microsoft.AspNetCore.Html.Abstractions" ProjectPath="$(RepositoryRoot)src\Html\Abstractions\src\Microsoft.AspNetCore.Html.Abstractions.csproj" />
+    <ProjectReferenceProvider Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" ProjectPath="$(RepositoryRoot)src\Identity\EntityFrameworkCore\src\Microsoft.AspNetCore.Identity.EntityFrameworkCore.csproj" />
+    <ProjectReferenceProvider Include="Microsoft.AspNetCore.Identity" ProjectPath="$(RepositoryRoot)src\Identity\Identity\src\Microsoft.AspNetCore.Identity.csproj" />
+    <ProjectReferenceProvider Include="Microsoft.AspNetCore.Identity.Specification.Tests" ProjectPath="$(RepositoryRoot)src\Identity\Specification.Tests\src\Microsoft.AspNetCore.Identity.Specification.Tests.csproj" />
+    <ProjectReferenceProvider Include="Microsoft.AspNetCore.Identity.UI" ProjectPath="$(RepositoryRoot)src\Identity\UI\src\Microsoft.AspNetCore.Identity.UI.csproj" />
     <ProjectReferenceProvider Include="Microsoft.AspNetCore.Connections.Abstractions" ProjectPath="$(RepositoryRoot)src\Servers\Connections.Abstractions\src\Microsoft.AspNetCore.Connections.Abstractions.csproj" />
     <ProjectReferenceProvider Include="Microsoft.AspNetCore.Server.Kestrel.Core" ProjectPath="$(RepositoryRoot)src\Servers\Kestrel\Core\src\Microsoft.AspNetCore.Server.Kestrel.Core.csproj" />
     <ProjectReferenceProvider Include="Microsoft.AspNetCore.Server.Kestrel.Https" ProjectPath="$(RepositoryRoot)src\Servers\Kestrel\Https\src\Microsoft.AspNetCore.Server.Kestrel.Https.csproj" />

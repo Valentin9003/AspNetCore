@@ -48,6 +48,7 @@
 
     <!-- Exclude the websockets samples for now because they use classic .csproj, which is not yet supported in our build. -->
     <ProjectToExclude Include="
+                       $(RepositoryRoot)src\Identity\samples\NativeWPFClient\NativeWPFClient.csproj;
                        $(RepositoryRoot)src\Middleware\WebSockets\samples\**\*.csproj;
                        $(RepositoryRoot)src\Tools\dotnet-watch\test\TestProjects\**\*.csproj;
                        " />
@@ -58,6 +59,7 @@
                       $(RepositoryRoot)src\Hosting\**\*.*proj;
                       $(RepositoryRoot)src\Http\**\*.*proj;
                       $(RepositoryRoot)src\Html\**\*.*proj;
+                      $(RepositoryRoot)src\Identity\**\*.*proj;
                       $(RepositoryRoot)src\Servers\**\*.*proj;
                       $(RepositoryRoot)src\Tools\**\*.*proj;
                       $(RepositoryRoot)src\Middleware\**\*.*proj;

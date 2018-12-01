@@ -1,5 +1,5 @@
 <!--
-This file is temporary until aspnet/Diagnostics and StaticFiles are merged into this repo.
+This file is temporary until we refactor projects to use ProjectRef.
 This is required to provide dependencies for samples and tests.
  -->
 <Project>
@@ -7,5 +7,18 @@ This is required to provide dependencies for samples and tests.
     <LatestPackageReference Include="Microsoft.AspNetCore.Server.IISIntegration" Version="2.1.1" />
     <LatestPackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.1.1" />
     <LatestPackageReference Include="Microsoft.AspNetCore.Routing" Version="2.1.1" />
+    <LatestPackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.1.1" />
+    <LatestPackageReference Include="Microsoft.AspNetCore.CookiePolicy" Version="2.1.1" />
+    <LatestPackageReference Include="Microsoft.AspNetCore.Authorization" Version="2.1.2" />
+    <LatestPackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="2.1.2" />
+    <LatestPackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.1.2" />
+    <LatestPackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="2.1.2" />
+    <LatestPackageReference Include="Microsoft.AspNetCore.Authentication.Twitter" Version="2.1.2" />
+    <LatestPackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="2.1.4" />
+    <LatestPackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="2.1.4" />
+    <LatestPackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="2.1.2" />
+
+    <!-- Need to figure out how to locally reference this SDK -->
+    <LatestPackageReference Include="Microsoft.NET.Sdk.Razor" Version="2.1.2" />
   </ItemGroup>
 </Project>
