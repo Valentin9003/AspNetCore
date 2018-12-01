@@ -61,8 +61,8 @@
     <MicrosoftExtensionsHostingAbstractionsPackageVersion>2.1.1</MicrosoftExtensionsHostingAbstractionsPackageVersion>
     <MicrosoftExtensionsHostingPackageVersion>2.1.1</MicrosoftExtensionsHostingPackageVersion>
     <MicrosoftExtensionsHttpPackageVersion>2.1.1</MicrosoftExtensionsHttpPackageVersion>
-    <MicrosoftExtensionsIdentityCorePackageVersion>2.1.1</MicrosoftExtensionsIdentityCorePackageVersion>
-    <MicrosoftExtensionsIdentityStoresPackageVersion>2.1.1</MicrosoftExtensionsIdentityStoresPackageVersion>
+    <MicrosoftExtensionsIdentityCorePackageVersion>2.1.6</MicrosoftExtensionsIdentityCorePackageVersion>
+    <MicrosoftExtensionsIdentityStoresPackageVersion>2.1.6</MicrosoftExtensionsIdentityStoresPackageVersion>
     <MicrosoftExtensionsLocalizationAbstractionsPackageVersion>2.1.1</MicrosoftExtensionsLocalizationAbstractionsPackageVersion>
     <MicrosoftExtensionsLocalizationPackageVersion>2.1.1</MicrosoftExtensionsLocalizationPackageVersion>
     <MicrosoftExtensionsLoggingAbstractionsPackageVersion>2.1.1</MicrosoftExtensionsLoggingAbstractionsPackageVersion>
