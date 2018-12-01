@@ -7,16 +7,16 @@ using Microsoft.AspNetCore.Routing;
 
 namespace Microsoft.AspNetCore.Builder
 {
-    internal class DefaultEndpointConventions : IEndpointConventions
+    internal class DefaultEndpointConventionBuilder : IEndpointConventionBuilder
     {
-        public DefaultEndpointConventions()
+        public DefaultEndpointConventionBuilder()
         {
             Conventions = new List<Action<EndpointBuilder>>();
         }
 
         public List<Action<EndpointBuilder>> Conventions { get; }
 
-        public void Apply(Action<EndpointBuilder> convention)
+        public void Add(Action<EndpointBuilder> convention)
         {
             Conventions.Add(convention);
         }

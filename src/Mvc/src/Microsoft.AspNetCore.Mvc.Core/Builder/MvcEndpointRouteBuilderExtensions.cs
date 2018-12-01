@@ -12,19 +12,19 @@ namespace Microsoft.AspNetCore.Builder
 {
     public static class MvcEndpointRouteBuilderExtensions
     {
-        public static IEndpointConventions MapApplication(
+        public static IEndpointConventionBuilder MapApplication(
             this IEndpointRouteBuilder routeBuilder)
         {
             return MapActionDescriptors(routeBuilder, null);
         }
 
-        public static IEndpointConventions MapAssembly<TContainingType>(
+        public static IEndpointConventionBuilder MapAssembly<TContainingType>(
             this IEndpointRouteBuilder routeBuilder)
         {
             return MapActionDescriptors(routeBuilder, typeof(TContainingType));
         }
 
-        private static IEndpointConventions MapActionDescriptors(
+        private static IEndpointConventionBuilder MapActionDescriptors(
             this IEndpointRouteBuilder routeBuilder,
             Type containingType)
         {
@@ -36,7 +36,7 @@ namespace Microsoft.AspNetCore.Builder
                 routeBuilder.DataSources.Add(mvcEndpointDataSource);
             }
 
-            var conventionBuilder = new DefaultEndpointConventions();
+            var conventionBuilder = new DefaultEndpointConventionBuilder();
 
             var assemblyFilter = containingType?.Assembly;
 
@@ -62,7 +62,7 @@ namespace Microsoft.AspNetCore.Builder
             return conventionBuilder;
         }
 
-        public static IEndpointConventions MapControllerRoute(
+        public static IEndpointConventionBuilder MapControllerRoute(
             this IEndpointRouteBuilder routeBuilder,
             string name,
             string template)
@@ -70,7 +70,7 @@ namespace Microsoft.AspNetCore.Builder
             return MapControllerRoute(routeBuilder, name, template, defaults: null);
         }
 
-        public static IEndpointConventions MapControllerRoute(
+        public static IEndpointConventionBuilder MapControllerRoute(
             this IEndpointRouteBuilder routeBuilder,
             string name,
             string template,
@@ -79,7 +79,7 @@ namespace Microsoft.AspNetCore.Builder
             return MapControllerRoute(routeBuilder, name, template, defaults, constraints: null);
         }
 
-        public static IEndpointConventions MapControllerRoute(
+        public static IEndpointConventionBuilder MapControllerRoute(
             this IEndpointRouteBuilder routeBuilder,
             string name,
             string template,
@@ -89,7 +89,7 @@ namespace Microsoft.AspNetCore.Builder
             return MapControllerRoute(routeBuilder, name, template, defaults, constraints, dataTokens: null);
         }
 
-        public static IEndpointConventions MapControllerRoute(
+        public static IEndpointConventionBuilder MapControllerRoute(
             this IEndpointRouteBuilder routeBuilder,
             string name,
             string template,

@@ -1,4 +1,4 @@
-﻿// Copyright (c) .NET Foundation. All rights reserved.
+// Copyright (c) .NET Foundation. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See License.txt in the project root for license information.
 
 using System;
@@ -54,7 +54,7 @@ namespace Microsoft.AspNetCore.Authorization.Test
         {
             public IList<Action<EndpointModel>> Conventions { get; } = new List<Action<EndpointModel>>();
 
-            public void Apply(Action<EndpointModel> convention)
+            public void Add(Action<EndpointModel> convention)
             {
                 Conventions.Add(convention);
             }

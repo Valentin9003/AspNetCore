@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Routing.Patterns;
 
 namespace Microsoft.AspNetCore.Builder
 {
-    internal class MvcEndpointInfo : DefaultEndpointConventions
+    internal class MvcEndpointInfo : DefaultEndpointConventionBuilder
     {
         public MvcEndpointInfo(
             string name,

@@ -6,11 +6,11 @@ using RoutingSample.Web.AuthorizationMiddleware;
 
 namespace Microsoft.AspNetCore.Builder
 {
-    public static class EndpointConventionsExtensions
+    public static class EndpointConventionBuilderExtensions
     {
-        public static IEndpointConventions RequireAuthorization(this IEndpointConventions builder, params string[] roles)
+        public static IEndpointConventionBuilder RequireAuthorization(this IEndpointConventionBuilder builder, params string[] roles)
         {
-            builder.Apply(endpointBuilder => endpointBuilder.Metadata.Add(new AuthorizationMetadata(roles)));
+            builder.Add(endpointBuilder => endpointBuilder.Metadata.Add(new AuthorizationMetadata(roles)));
             return builder;
         }
     }

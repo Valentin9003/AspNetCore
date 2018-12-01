@@ -13,17 +13,17 @@ namespace Microsoft.AspNetCore.Routing
 {
     internal class ModelEndpointDataSource : EndpointDataSource
     {
-        private List<EndpointConventions> _endpointConventions;
+        private List<EndpointConventionBuilder> _endpointConventionBuilders;
 
         public ModelEndpointDataSource()
         {
-            _endpointConventions = new List<EndpointConventions>();
+            _endpointConventionBuilders = new List<EndpointConventionBuilder>();
         }
 
-        public IEndpointConventions AddEndpointBuilder(EndpointBuilder endpointBuilder)
+        public IEndpointConventionBuilder AddEndpointBuilder(EndpointBuilder endpointBuilder)
         {
-            var builder = new EndpointConventions(endpointBuilder);
-            _endpointConventions.Add(builder);
+            var builder = new EndpointConventionBuilder(endpointBuilder);
+            _endpointConventionBuilders.Add(builder);
 
             return builder;
         }
@@ -33,24 +33,24 @@ namespace Microsoft.AspNetCore.Routing
             return NullChangeToken.Singleton;
         }
 
-        public override IReadOnlyList<Endpoint> Endpoints => _endpointConventions.Select(e => e.Build()).ToArray();
+        public override IReadOnlyList<Endpoint> Endpoints => _endpointConventionBuilders.Select(e => e.Build()).ToArray();
 
         // for testing
-        internal IEnumerable<EndpointBuilder> EndpointBuilders => _endpointConventions.Select(b => b.EndpointBuilder);
+        internal IEnumerable<EndpointBuilder> EndpointBuilders => _endpointConventionBuilders.Select(b => b.EndpointBuilder);
 
-        private class EndpointConventions : IEndpointConventions
+        private class EndpointConventionBuilder : IEndpointConventionBuilder
         {
             internal EndpointBuilder EndpointBuilder { get; }
 
             private readonly List<Action<EndpointBuilder>> _conventions;
 
-            public EndpointConventions(EndpointBuilder endpointBuilder)
+            public EndpointConventionBuilder(EndpointBuilder endpointBuilder)
             {
                 EndpointBuilder = endpointBuilder;
                 _conventions = new List<Action<EndpointBuilder>>();
             }
 
-            public void Apply(Action<EndpointBuilder> convention)
+            public void Add(Action<EndpointBuilder> convention)
             {
                 _conventions.Add(convention);
             }

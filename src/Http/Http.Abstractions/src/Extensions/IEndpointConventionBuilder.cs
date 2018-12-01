@@ -6,17 +6,17 @@ using System;
 namespace Microsoft.AspNetCore.Builder
 {
     /// <summary>
-    /// Allows customization of the <see cref="EndpointBuilder"/>.
+    /// Builds conventions that will be used for customization of <see cref="EndpointBuilder"/> instances.
     /// </summary>
     /// <remarks>
     /// This interface is used at application startup to customize endpoints for the application.
     /// </remarks>
-    public interface IEndpointConvention
+    public interface IEndpointConventionBuilder
     {
         /// <summary>
-        /// Called to apply the convention to the <see cref="EndpointBuilder"/>.
+        /// Adds the convention to the builder. Conventions will used for customization of <see cref="EndpointBuilder"/> instances.
         /// </summary>
-        /// <param name="convention">The convention to apply to the <see cref="EndpointBuilder"/>.</param>
-        void Apply(Action<EndpointBuilder> convention);
+        /// <param name="convention">The convention to add to the builder.</param>
+        void Add(Action<EndpointBuilder> convention);
     }
 }

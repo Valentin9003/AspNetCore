@@ -59,7 +59,7 @@ namespace Microsoft.AspNetCore.Mvc.Routing
             _parameterPolicyFactory = parameterPolicyFactory;
 
             ConventionalEndpointInfos = new List<MvcEndpointInfo>();
-            AttributeRoutingConventionResolvers = new List<Func<ActionDescriptor, DefaultEndpointConventions>>();
+            AttributeRoutingConventionResolvers = new List<Func<ActionDescriptor, DefaultEndpointConventionBuilder>>();
 
             // IMPORTANT: this needs to be the last thing we do in the constructor. Change notifications can happen immediately!
             //
@@ -75,7 +75,7 @@ namespace Microsoft.AspNetCore.Mvc.Routing
 
         public List<MvcEndpointInfo> ConventionalEndpointInfos { get; }
 
-        public List<Func<ActionDescriptor, DefaultEndpointConventions>> AttributeRoutingConventionResolvers { get; }
+        public List<Func<ActionDescriptor, DefaultEndpointConventionBuilder>> AttributeRoutingConventionResolvers { get; }
 
         public override IReadOnlyList<Endpoint> Endpoints
         {
@@ -220,7 +220,7 @@ namespace Microsoft.AspNetCore.Mvc.Routing
             }
         }
 
-        private DefaultEndpointConventions ResolveActionConventionBuilder(ActionDescriptor action)
+        private DefaultEndpointConventionBuilder ResolveActionConventionBuilder(ActionDescriptor action)
         {
             foreach (var filter in AttributeRoutingConventionResolvers)
             {
