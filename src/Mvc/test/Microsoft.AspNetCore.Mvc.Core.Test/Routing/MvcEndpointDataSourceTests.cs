@@ -1356,10 +1356,10 @@ namespace Microsoft.AspNetCore.Mvc.Routing
                 mvcEndpointInvokerFactory ?? new MvcEndpointInvokerFactory(new ActionInvokerFactory(Array.Empty<IActionInvokerProvider>())),
                 serviceProvider.GetRequiredService<ParameterPolicyFactory>());
 
-            var defaultEndpointConventions = new DefaultEndpointConventions();
+            var defaultEndpointConventionBuilder = new DefaultEndpointConventionBuilder();
             dataSource.AttributeRoutingConventionResolvers.Add((actionDescriptor) =>
             {
-                return defaultEndpointConventions;
+                return defaultEndpointConventionBuilder;
             });
 
             return dataSource;
